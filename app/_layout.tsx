@@ -6,7 +6,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import 'react-native-reanimated';
 import {SafeAreaView} from 'react-native'
 import { MD3LightTheme as DefaultTheme, PaperProvider } from 'react-native-paper';
-import { getDBConnection, getTodoItems, saveTodoItems, createTable, clearTable, deleteTodoItem } from './db-service';
+import { getDBConnection, createTable } from './db-service';
 
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -22,9 +22,9 @@ const theme = {
 };
 
 export default function RootLayout() {
+
   const loadDataCallback = useCallback(async () => {
     try {
-      console.log("Run RootLayout");
       const db = await getDBConnection();
       await createTable(db);
     } catch (error) {
@@ -53,7 +53,8 @@ export default function RootLayout() {
   return (
     <PaperProvider theme={theme}>
         <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)" 
+            options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>
     </PaperProvider>

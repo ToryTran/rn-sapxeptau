@@ -1,8 +1,8 @@
 import * as SQLite from "expo-sqlite";
 import { LogItem } from "../models";
 
-const dbFileName = "montext";
-const tableName = "tabletextbk";
+const dbFileName = "dbhqdn";
+const tableName = "datalogs";
 
 export const getDBConnection = async () => {
     try {
@@ -27,8 +27,7 @@ export const createTable = async (db: SQLite.SQLiteDatabase) => {
                 name TEXT NOT NULL,
                 voyn TEXT NOT NULL,
                 time TEXT NOT NULL,
-                vtl TEXT NOT NULL,
-                vtm TEXT NOT NULL,
+                vtt TEXT NOT NULL,
                 vtg TEXT NOT NULL,
                 kcl TEXT NOT NULL,
                 kcm TEXT NOT NULL
@@ -86,9 +85,9 @@ export const getLogs = async (
     try {
         console.log("getAllAsync getLogs");
       const results: LogItem[] = await db.getAllAsync(
-        `SELECT rowid as id, * FROM ${tableName}`
+        `SELECT rowid as id, * FROM ${tableName} ORDER BY time ASC`
       );
-      console.log("get all db service", results);
+      console.log("getLogs db service", results.length);
       return results;
     } catch (error) {
       console.error(error);
@@ -99,31 +98,17 @@ export const getLogs = async (
 export const saveLogItems = async (db: any, todoItems: LogItem[]) => {
     try {
         const insertQuery =
-        `INSERT OR REPLACE INTO ${tableName} (rowid, name, voyn, time, vtl, vtm, vtg, kcl, kcm)  values` +
-        todoItems.map(i => `(${i.id}, '${i.name}', '${i.voyn}', '${i.time}', '${i.vtl}', '${i.vtm}', '${i.vtg}', '${i.kcl}', '${i.kcm}')`).join(',');
-        console.log(insertQuery);
+        `INSERT OR REPLACE INTO ${tableName} (rowid, name, voyn, time, vtt, vtg, kcl, kcm)  values` +
+        todoItems.map(i => `(${i.id}, '${i.name}', '${i.voyn}', '${i.time}', '${i.vtt}', '${i.vtg}', '${i.kcl}', '${i.kcm}')`).join(',');
+        // console.log(insertQuery);
         const result = await db.runAsync(insertQuery);
-        console.log(result.lastInsertRowId, result.changes);
+        // console.log(result.lastInsertRowId, result.changes);
     } catch (error) {
         console.log("save log items error", error);
+        throw error
     }
   
 };
-
-export const saveLogItemsbk = async (db: any, todoItems: LogItem[]) => {
-  try {
-      const insertQuery =
-      `INSERT OR REPLACE INTO ${tableName} (rowid, name, voyn, time, vtl, vtm, vtg, kcl, kcm)  values` +
-      todoItems.map(i => `(${i.id}, '${i.name}', '${i.voyn}', '${i.time}', ${i.vtl}, ${i.vtm}, ${i.vtg}, ${i.kcl}, ${i.kcm})`).join(',');
-      console.log(insertQuery);
-      const result = await db.runAsync(insertQuery);
-      console.log(result.lastInsertRowId, result.changes);
-  } catch (error) {
-      console.log("save log items error", error);
-  }
-
-};
-
 
 export const deleteLogItem = async (db: any, id: number) => {
   const deleteQuery = `DELETE from ${tableName} where rowid = ${id}`;

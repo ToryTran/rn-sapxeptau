@@ -3,8 +3,7 @@ export type LogItem = {
   name: string;
   voyn: string;
   time: string;
-  vtl: string;
-  vtm: string;
+  vtt: string;
   vtg: string;
   kcl: string;
   kcm: string;

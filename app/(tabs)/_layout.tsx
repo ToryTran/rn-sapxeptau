@@ -4,10 +4,12 @@ import React from 'react';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { useRoute } from '@react-navigation/native';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-
+  const route = useRoute()
+  
   return (
     <Tabs
       screenOptions={{
