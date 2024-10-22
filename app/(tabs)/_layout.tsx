@@ -28,16 +28,16 @@ export default function TabLayout() {
         options={{
           title: 'Lịch sử đo',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'file-tray-stacked' : 'file-tray-stacked-outline'} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="setting"
+        name="settings"
         options={{
-          title: 'Cài đặt',
+          title: 'Tài khoản',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'settings' : 'settings-outline'} color={color} />
+            <TabBarIcon name={focused ? 'settings-sharp' : 'settings-outline'} color={color} />
           ),
         }}
       />

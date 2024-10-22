@@ -5,12 +5,12 @@ import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('TTDHSX');
   const [password, setPassword] = useState('');
   const router = useRouter();
 
   const handleLogin = async () => {
-    if (email === 'TTDHSX@123456' && password === 'Cangdanang1901') {
+    if (email.toUpperCase() == 'TTDHSX' && password.toUpperCase() == 'CANGDANANG1901') {
       // Simulate saving an auth token to AsyncStorage
       await AsyncStorage.setItem('authToken', 'dummy-auth-token');
       router.replace('/');

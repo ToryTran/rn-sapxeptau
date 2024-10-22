@@ -98,8 +98,9 @@ export default function RootLayout() {
             headerShown: false, // Hide header if you want a full-screen login
           }}
           >
-            {/* <Stack.Screen name="login" options={{ headerShown: false }} /> */}
-            <Stack.Screen name="(tabs)/index" />
+            <Stack.Screen name="login" options={{ headerShown: false }} />
+            {/* <Stack.Screen name="(tabs)"/> */}
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           </Stack>
     </PaperProvider>
   );
