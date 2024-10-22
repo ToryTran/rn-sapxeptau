@@ -190,7 +190,7 @@ export default function HomeScreen() {
         <Card.Actions>
           <Button mode="outlined" onPress={resetForm}>Làm lại</Button>
           <Button loading={isLoad} icon="check-circle-outline" mode="contained" onPress={analyzeData}>
-            Xác nhận 
+            Xác nhận
           </Button>
         </Card.Actions>
       </Card>
