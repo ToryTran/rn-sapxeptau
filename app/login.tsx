@@ -21,16 +21,18 @@ const LoginScreen = () => {
 
   return (
     <ImageBackground
-      source={require('../assets/images/background-login.png')}  // Path to your background image
+      source={require('../assets/images/login-background-hd.jpg')}  // Path to your background image
       style={styles.background}
     >
     <View style={styles.container}>
-      <Image
+    <View style={styles.box}>
+    <Image
         source={require('../assets/images/logo-png.png')}  // Path to your logo
         style={styles.logo}
         resizeMode="contain"   // Adjust how the image fits
       />
-      <Text style={styles.title}>DNP Đo quan trắc</Text>
+      <Text style={styles.titleLogo}>CẢNG ĐÀ NẴNG</Text>
+      <Text style={styles.title}>Đăng nhập</Text>
       <TextInput
         placeholder="Tên đăng nhập"
         value={email}
@@ -48,6 +50,8 @@ const LoginScreen = () => {
         <Text style={styles.text}>Đăng nhập</Text>
       </Pressable>
     </View>
+      
+    </View>
     </ImageBackground>
   );
 };
@@ -57,10 +61,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',    // Centers vertically
     alignItems: 'center',        // Centers horizontally
-    backgroundColor: 'rgba(255, 255, 255, 0.2)'
+    backgroundColor: 'rgba(0, 0, 0, 0.05)'
+  },
+  titleLogo: {
+    fontSize: 24,
+    textAlign: 'center',
+    color: 'white',
+    marginBottom: 40,
+    fontWeight: 'bold',
   },
   title: {
-    fontSize: 24,
+    fontSize: 18,
     marginBottom: 20,
     textAlign: 'center',
     color: 'white',
@@ -71,13 +82,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 12,
     padding: 10,
-    width: '80%',
+    width: '100%',
     backgroundColor: 'white',
   },
   logo: {
     width: 150,   // Adjust the size of the logo
     height: 150,
-    marginBottom: 20,
   },
   button: {
     alignItems: 'center',
@@ -87,7 +97,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     elevation: 3,
     backgroundColor: '#725CA9',
-    width: '80%',
+    width: '100%',
   },
   text: {
     fontSize: 16,
@@ -103,6 +113,14 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'cover',
   },
+  box: {
+    padding: 20,
+    width: '90%',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    borderRadius: 10,
+    justifyContent: 'center',    // Centers vertically
+    alignItems: 'center',    
+  }
 });
 
 export default LoginScreen;
