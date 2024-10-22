@@ -26,7 +26,7 @@ const LoginScreen = () => {
     >
     <View style={styles.container}>
       <Image
-        source={require('../assets/images/logo-danang-port.jpg')}  // Path to your logo
+        source={require('../assets/images/logo-png.png')}  // Path to your logo
         style={styles.logo}
         resizeMode="contain"   // Adjust how the image fits
       />
